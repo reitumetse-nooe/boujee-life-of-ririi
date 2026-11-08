@@ -20,17 +20,20 @@ function Login() {
 
     try {
 
-      // Send login details to our backend
-      const response = await fetch('http://localhost:5000/api/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          email: email.trim(),
-          password: password
-        })
-      });
+      // Send login details to our deployed backend
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL || 'http://localhost:5000/api'}/auth/login`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            email: email.trim(),
+            password: password
+          })
+        }
+      );
 
       const data = await response.json();
 
@@ -57,7 +60,7 @@ function Login() {
 
       setErrorMessage(
         error.message === 'Failed to fetch'
-          ? 'Cannot connect to the server. Please check that your backend is running.'
+          ? 'Cannot connect to the server. Please check your internet connection.'
           : error.message
       );
 

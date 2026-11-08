@@ -5,7 +5,7 @@ import Cropper from 'react-easy-crop';
 import '../styles/Dashboard.css';
 import '../styles/MediaStudio.css';
 
-const API_URL = 'http://localhost:5000/api';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 const categories = [
     'Jet-Set Diaries',

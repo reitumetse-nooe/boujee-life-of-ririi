@@ -20,7 +20,7 @@ function ProtectedRoute({ children }) {
             try {
 
                 const response = await fetch(
-                    'http://localhost:5000/api/creator/dashboard',
+                    `${process.env.REACT_APP_API_URL || 'http://localhost:5000/api'}/creator/dashboard`,
                     {
                         method: 'GET',
                         headers: {

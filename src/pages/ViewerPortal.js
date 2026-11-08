@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import '../styles/ViewerPortal.css';
 
-const API_URL = 'http://localhost:5000/api/content';
+const API_URL = `${process.env.REACT_APP_API_URL || 'http://localhost:5000/api'}/content`;
 const LIKED_STORIES_KEY = 'boujee_liked_stories';
 const VISITOR_ID_KEY = 'boujee_visitor_id';
 

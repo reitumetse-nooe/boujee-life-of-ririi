@@ -1,3 +1,4 @@
+
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
@@ -11,10 +12,22 @@ const uploadRoutes = require('./routes/uploadRoutes');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Allow our React website to communicate with the backend
-app.use(cors({ origin: 'http://localhost:3000' }));
+// Allow local development and the deployed website
+const allowedOrigins = [
+    'http://localhost:3000',
+    process.env.FRONTEND_URL
+].filter(Boolean);
 
-// Allow the server to receive JSON data
+app.use(cors({
+    origin: (origin, callback) => {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    }
+}));
+
 app.use(express.json());
 
 // Authentication routes
@@ -29,7 +42,7 @@ app.use('/api/content', contentRoutes);
 // Media upload routes
 app.use('/api/upload', uploadRoutes);
 
-// Test route
+// Backend health check
 app.get('/api/health', (req, res) => {
     res.json({
         message: 'Boujee Life of Ririi API is running!'
@@ -38,11 +51,16 @@ app.get('/api/health', (req, res) => {
 
 // Connect to MongoDB before starting the server
 const startServer = async () => {
-    await connectDB();
+    try {
+        await connectDB();
 
-    app.listen(PORT, () => {
-        console.log(`Boujee backend running on port ${PORT}`);
-    });
+        app.listen(PORT, () => {
+            console.log(`Boujee backend running on port ${PORT}`);
+        });
+    } catch (error) {
+        console.error('Server startup failed:', error.message);
+        process.exit(1);
+    }
 };
 
 startServer();
