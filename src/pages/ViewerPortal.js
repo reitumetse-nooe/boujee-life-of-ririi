@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
+
+import { useEffect, useRef, useState, useCallback } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import '../styles/ViewerPortal.css';
 
@@ -170,13 +171,13 @@ function ViewerPortal() {
     };
 
     // CLOSE FULL-SCREEN MEDIA
-    const closeMedia = () => {
+    const closeMedia = useCallback(() => {
         setSelectedMedia(null);
 
         if (!notification) {
             document.body.style.overflow = '';
         }
-    };
+    }, [notification]);
 
     // CLOSE NOTIFICATION AND MEDIA WITH ESCAPE
     useEffect(() => {
@@ -195,7 +196,7 @@ function ViewerPortal() {
         return () => {
             window.removeEventListener('keydown', handleKeyDown);
         };
-    }, [notification, selectedMedia]);
+    }, [notification, selectedMedia, closeMedia]);
 
     // KEEP THE PAGE LOCKED WHILE A MODAL IS OPEN
     useEffect(() => {
