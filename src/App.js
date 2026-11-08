@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import HomePage from './pages/HomePage';
+import ViewerPortal from './pages/ViewerPortal';
+import CategoryPage from './pages/CategoryPage';
+import Login from './pages/Login';
+import Dashboard from './pages/Dashboard';
+
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <BrowserRouter>
+            <Routes>
+
+                {/* PUBLIC HOMEPAGE */}
+                <Route path="/" element={<HomePage />} />
+
+                {/* PUBLIC VIEWER PORTAL */}
+                <Route path="/viewer" element={<ViewerPortal />} />
+
+                {/* CATEGORY GALLERIES */}
+                <Route path="/category/:category" element={<CategoryPage />} />
+
+                {/* CREATOR LOGIN */}
+                <Route path="/login" element={<Login />} />
+
+                {/* PROTECTED CREATOR DASHBOARD */}
+                <Route
+                    path="/dashboard"
+                    element={
+                        <ProtectedRoute>
+                            <Dashboard />
+                        </ProtectedRoute>
+                    }
+                />
+
+            </Routes>
+        </BrowserRouter>
+    );
 }
 
 export default App;

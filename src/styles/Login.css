@@ -1,0 +1,114 @@
+/* LOGIN PAGE BACKGROUND */
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #100d0b;
+  padding: 30px;
+  box-sizing: border-box;
+  color: #f5eee5;
+  font-family: Arial, sans-serif;
+}
+
+/* LOGIN CARD */
+.login-container {
+  width: 100%;
+  max-width: 450px;
+  padding: 50px 40px;
+  background: #1b1511;
+  border: 1px solid #8e704b;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+/* BRAND NAME */
+.login-container h1 {
+  color: #d6b47c;
+  font-family: Georgia, serif;
+  font-size: 27px;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+/* CREATOR STUDIO LABEL */
+.login-container > p:first-of-type {
+  color: #d6b47c;
+  font-size: 10px;
+  letter-spacing: 5px;
+  margin-bottom: 40px;
+}
+
+/* WELCOME HEADING */
+.login-container h2 {
+  font-family: Georgia, serif;
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+/* DESCRIPTION */
+.login-container form + a {
+  display: inline-block;
+  margin-top: 25px;
+  color: #d6b47c;
+  text-decoration: none;
+}
+
+/* FORM */
+.login-container form {
+  margin-top: 30px;
+  text-align: left;
+}
+
+.login-container form div {
+  margin-bottom: 22px;
+}
+
+.login-container label {
+  display: block;
+  margin-bottom: 9px;
+  font-size: 13px;
+  color: #d6b47c;
+}
+
+.login-container input {
+  width: 100%;
+  padding: 14px;
+  background: #100d0b;
+  border: 1px solid #594532;
+  color: white;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.login-container input:focus {
+  border-color: #d6b47c;
+}
+
+/* SIGN IN BUTTON */
+.login-container button {
+  width: 100%;
+  padding: 15px;
+  background: #d6b47c;
+  border: none;
+  color: #100d0b;
+  font-weight: bold;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login-container button:hover {
+  background: #f0d4a5;
+}
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 480px) {
+  .login-container {
+    padding: 35px 22px;
+  }
+
+  .login-container h1 {
+    font-size: 22px;
+  }
+}

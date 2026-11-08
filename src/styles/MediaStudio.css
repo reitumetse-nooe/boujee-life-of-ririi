@@ -1,0 +1,188 @@
+
+/* =====================================
+   BOUJEE MEDIA STUDIO
+===================================== */
+
+.media-editor-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: rgba(12, 9, 7, 0.88);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.media-editor-window {
+    width: 100%;
+    max-width: 850px;
+    background: #f8f4ed;
+    border-radius: 14px;
+    padding: 28px;
+    color: #241a15;
+    box-shadow: 0 20px 70px rgba(0, 0, 0, 0.4);
+}
+
+.media-editor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+}
+
+.media-editor-header p {
+    color: #a47b42;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 7px;
+}
+
+.media-editor-header h2 {
+    font-family: Georgia, serif;
+    font-size: 27px;
+    margin: 0;
+}
+
+.media-editor-stage {
+    position: relative;
+    width: 100%;
+    height: 550px;
+    background: #17120f;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+/* Cropper must fill the editing stage and accept pointer movement. */
+.media-editor-stage .reactEasyCrop_Container {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    touch-action: none;
+    cursor: grab;
+}
+
+.media-editor-stage .reactEasyCrop_Container:active {
+    cursor: grabbing;
+}
+
+.media-editor-stage .reactEasyCrop_Image {
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.media-video-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #17120f;
+}
+
+.media-editor-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 22px 0;
+}
+
+.crop-control {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.crop-control label {
+    width: 110px;
+    color: #8b693c;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.crop-control button,
+.reset-edit-button {
+    background: #281d17;
+    color: #f8f4ed;
+    border: 1px solid #a47b42;
+    border-radius: 5px;
+    padding: 9px 15px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.crop-control button:hover,
+.reset-edit-button:hover {
+    background: #a47b42;
+    color: white;
+}
+
+.crop-control input[type="range"] {
+    flex: 1;
+    min-width: 100px;
+    accent-color: #a47b42;
+    cursor: pointer;
+}
+
+.crop-control select {
+    background: white;
+    border: 1px solid #d5c7b5;
+    padding: 9px 12px;
+    border-radius: 5px;
+    color: #281d17;
+    cursor: pointer;
+}
+
+.reset-edit-button {
+    align-self: flex-start;
+    letter-spacing: 1px;
+}
+
+.crop-instruction {
+    color: #756b63;
+    font-size: 12px;
+    margin: 0;
+}
+
+.media-editor-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    border-top: 1px solid #e5dbcf;
+    padding-top: 20px;
+}
+
+.media-editor-footer button:disabled,
+.story-form-actions button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+    .media-editor-window {
+        padding: 18px;
+    }
+
+    .media-editor-stage {
+        height: 400px;
+    }
+
+    .crop-control {
+        gap: 8px;
+    }
+
+    .crop-control label {
+        width: 100%;
+    }
+
+    .media-editor-footer {
+        flex-direction: column;
+    }
+
+    .media-editor-footer button {
+        width: 100%;
+    }
+}
